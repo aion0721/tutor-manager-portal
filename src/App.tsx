@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import { Menubar } from "primereact/menubar";
+import { Card } from "primereact/card";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import Home from "./components/Home";
+import Report from "./components/Report";
 
-function App() {
+const App: React.FC = () => {
+  const [activeContent, setActiveContent] = useState("home");
+
+  const menuItems = [
+    {
+      label: "Home",
+      icon: "pi pi-fw pi-home",
+      command: () => setActiveContent("home"),
+    },
+    {
+      label: "Report",
+      icon: "pi pi-fw pi-flag",
+      command: () => setActiveContent("report"),
+    },
+  ];
+
+  const renderContent = () => {
+    switch (activeContent) {
+      case "home":
+        return <Home />;
+      case "report":
+        return <Report />;
+      default:
+        return <Card title="404">Not found contents...</Card>;
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="layout">
+      <header>
+        <Menubar model={menuItems} />
       </header>
+
+      <main className="content">{renderContent()}</main>
+
+      <footer className="footer">
+        <p>aaa</p>
+      </footer>
     </div>
   );
-}
+};
 
 export default App;
