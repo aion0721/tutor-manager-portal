@@ -4,6 +4,7 @@ import { OverlayPanel } from "primereact/overlaypanel";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import { Avatar } from "primereact/avatar";
+import { InputMask, InputMaskChangeEvent } from "primereact/inputmask";
 
 const UserInfo: React.FC = () => {
   const [storedId, setStoredId] = useState<string>("");
@@ -74,12 +75,14 @@ const UserInfo: React.FC = () => {
         <div className="p-fluid">
           <div className="p-field">
             <label htmlFor="id">ID</label>
-            <InputText
+            <InputMask
               id="id"
               value={inputId}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setInputId(e.target.value)
+              onChange={(e: InputMaskChangeEvent) =>
+                setInputId(e.value as string)
               }
+              mask="aaa99999"
+              placeholder="pit00000"
             />
           </div>
           <div className="p-field">
@@ -90,6 +93,7 @@ const UserInfo: React.FC = () => {
               onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setInputName(e.target.value)
               }
+              placeholder="南山太郎"
             />
           </div>
           <Button label="OK" icon="pi pi-check" onClick={handleSave} />
