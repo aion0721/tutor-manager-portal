@@ -10,9 +10,9 @@ import Home from "./components/Home";
 import Report from "./components/Report";
 
 import logo from "./logo.png";
-import { Avatar } from "primereact/avatar";
 import Question from "./components/Question";
 import Survey from "./components/Survey";
+import UserInfo from "./components/utils/UserInfo";
 
 interface MenuItem {
   label: string;
@@ -30,8 +30,7 @@ const start = (
 
 const end = (
   <div className="flex align-items-center">
-    <span className="mr-2">UserName</span>
-    <Avatar icon="pi pi-user" shape="circle" />
+    <UserInfo />
   </div>
 );
 
