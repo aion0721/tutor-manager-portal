@@ -31,3 +31,13 @@
 .p-menubar .p-menuitem-link:not(.p-disabled):hover {
   background-color: #bbdefb;
 }
+
+.custom-marker {
+  display: flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  z-index: 1;
+}
